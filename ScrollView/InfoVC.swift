@@ -73,7 +73,7 @@ class InfoVC: UIViewController {
                                                   name: NSNotification.Name.UIKeyboardDidShow,
                                                   object: nil)
         NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name.UIKeyboardWillShow,
+                                                  name: NSNotification.Name.UIKeyboardWillHide,
                                                   object: nil)
     }
    
