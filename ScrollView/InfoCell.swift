@@ -40,4 +40,6 @@ class InfoCell: UITableViewCell {
         inputTextField.text = data["data"]
     }
     
+    
+      
 }

@@ -12,7 +12,7 @@ import UIKit
 // MARK: infoVC view controller
 class InfoVC: UIViewController {
     
-    let data: [[String:String]] = [
+    var data: [[String:String]] = [
         
         ["title":"FULL NAME", "data":"Abhishek Singh"],
         ["title":"FATHER NAME", "data":"Ramesh Singh"],
@@ -52,6 +52,7 @@ class InfoVC: UIViewController {
     // MARK: Hide keyboard
     func hideKeyboard(){
         profileSettingTable.endEditing(true)
+        
     }
     
 }
@@ -123,6 +124,15 @@ extension InfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool{
         
         return false
+    }
+    //MARK: Data Persistance added.
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath){
+        if(indexPath.row > 0 && indexPath.row <= data.count){
+        let dummyCell = cell as! InfoCell
+        data[indexPath.row - 1]["data"] = dummyCell.inputTextField.text
+        }
+        
+        
     }
     
     
