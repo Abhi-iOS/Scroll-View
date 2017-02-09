@@ -23,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="urt-Wy-WX7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="urt-Wy-WX7">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.028108995407819748" green="0.81836634874343872" blue="0.83134114742279053" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCellID" rowHeight="210" id="6hr-Ve-EGa" customClass="ProfileCell" customModule="ScrollView" customModuleProvider="target">
@@ -103,19 +103,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="urt-Wy-WX7" firstAttribute="centerX" secondItem="eQJ-Ye-Ao0" secondAttribute="centerX" id="9Ro-Ep-8vd"/>
-                            <constraint firstItem="urt-Wy-WX7" firstAttribute="centerY" secondItem="eQJ-Ye-Ao0" secondAttribute="centerY" id="QQn-28-8uU"/>
+                            <constraint firstItem="urt-Wy-WX7" firstAttribute="top" secondItem="SkD-o2-qyd" secondAttribute="bottom" id="NOq-Vq-31c"/>
                             <constraint firstItem="urt-Wy-WX7" firstAttribute="width" secondItem="eQJ-Ye-Ao0" secondAttribute="width" id="TyT-6b-mAU"/>
-                            <constraint firstItem="urt-Wy-WX7" firstAttribute="height" secondItem="eQJ-Ye-Ao0" secondAttribute="height" id="UAe-Ec-Nxe"/>
+                            <constraint firstItem="bat-2v-rVe" firstAttribute="top" secondItem="urt-Wy-WX7" secondAttribute="bottom" id="oHy-aU-qlc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile Settings" id="rfB-BQ-Hmk"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="oHy-aU-qlc" id="atc-Ui-hME"/>
                         <outlet property="profileSettingTable" destination="urt-Wy-WX7" id="m7z-PW-gxD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frs-h5-wBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4487" y="-908"/>
+            <point key="canvasLocation" x="4367" y="-908"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GHS-hu-vft">

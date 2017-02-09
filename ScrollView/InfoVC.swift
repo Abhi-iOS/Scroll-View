@@ -29,6 +29,9 @@ class InfoVC: UIViewController {
     
     
     @IBOutlet weak var profileSettingTable: UITableView!
+    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    //Mark: view Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,21 +43,40 @@ class InfoVC: UIViewController {
         // Assigning Deligates to the table view
         profileSettingTable.delegate = self
         
+        //Automatic adjust scroll of table view.
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         //Register Nib
         let nib = UINib(nibName:"InfoCell" , bundle: nil)
         profileSettingTable.register(nib, forCellReuseIdentifier: "InfoCellID")
-        // MARK: Examines Gestures outside textfield
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(InfoVC.hideKeyboard))
-        tapGesture.cancelsTouchesInView = true
-        profileSettingTable.addGestureRecognizer(tapGesture)
         
-    }
-    // MARK: Hide keyboard
-    func hideKeyboard(){
-        profileSettingTable.endEditing(true)
+        //Applying notification center to adjust height of table view
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardDidShow, object: nil, queue: OperationQueue.main, using: {(Notification) in
         
+            guard let info = Notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else{return}
+            
+            let keyboardHeight = info.cgRectValue.size.height
+            
+            self.bottomConstraint.constant = keyboardHeight
+            
+        })
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main, using: {(Notification) in
+        
+            self.bottomConstraint.constant = 0
+            
+        })
     }
-    
+    //Deinitializer to remove observers.
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardDidShow,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillShow,
+                                                  object: nil)
+    }
+   
 }
 
 //MARK: UITableViewDelegate, UITableViewDataSource
